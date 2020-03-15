@@ -1,0 +1,157 @@
+@font-face {
+  font-family: Minecraft;
+  src: url(fonts/Minecraftia-Regular.ttf);
+}
+
+@font-face {
+  font-family: Minecrafter;
+  src: url(fonts/Minecrafter.Alt.ttf);
+}
+
+body, html{
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+html *{
+  cursor: default;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+
+img{
+  pointer-events: none;
+}
+
+button, input, a{
+  cursor: pointer;
+}
+
+main{
+  padding-top: calc(.5rem + 1rem + 30px);
+  z-index: 2;
+}
+
+.drag{
+  -webkit-app-region: drag;
+}
+
+.nodrag{
+  -webkit-app-region: no-drag;
+}
+
+#paralax{
+  position: absolute;
+  z-index: -1;
+  width: 120%;
+  height: 120%;
+  left: -10%;
+  top: -10%;
+}
+
+#paralax img{
+  width: 100%;
+  height: 100%;
+}
+
+.bluredBG{
+  backdrop-filter: blur(5px);
+  background: rgba(0,0,0,0.2);
+}
+
+footer{
+  box-shadow: 0px -5px 5px #343a40;
+  width: 110%;
+  left: -5% !important;
+}
+
+#loginForm{
+  position: absolute;
+  width: 300px;
+  top: 175px;
+  left: 75px;
+  padding: 105px 5px 5px 5px;
+  border-radius: 10px;
+  color: white;
+}
+
+#loginForm input{
+  color:white;
+  background: transparent;
+  border: none;
+  background: rgba(0,0,0,0.3);
+  border-radius: 0 0 5px 5px;
+}
+
+#loginForm h5{
+  margin: 0;
+}
+
+#loginForm button{
+  margin-top: 4px;
+  width: 100%;
+  font-family: Minecrafter;
+}
+
+#logo{
+  position: absolute;
+  left: -5px;
+  top: -30px;
+}
+
+#edition{
+  position: absolute;
+  color: rgb(255,255,0);
+  text-shadow: 2px 2px rgb(68,68,15);
+  animation: pulse .5s infinite;
+  transform-origin: 50% 50%;
+  right:-40px;
+  bottom: 30px;
+  font-size: 18px;
+  font-family: Minecraft;
+}
+
+#onlineList h6, #loginForm h5{
+  border-bottom: 1px solid white;
+  padding-left: 2px;
+}
+
+#onlineList{
+  position: absolute;
+  right: 0;
+  bottom: 30px;
+  width: 175px;
+  color: white;
+  padding: 2px;
+  border-radius: 10px 0 0 0;
+}
+
+#onlineList .player{
+  margin: 5px;
+}
+
+#onlineList .player *{
+  height: 16px;
+  line-height: 25px;
+  font-size: 12px;
+  font-family: Minecraft;
+}
+
+#onlineList img{
+  min-height: 16px;
+  float: left;
+  margin-right: 5px;
+}
+
+@keyframes pulse {
+  0% {
+    transform:scale(1) rotate(-20deg);
+  }
+  50% {
+    transform:scale(1.05) rotate(-20deg);
+  }
+  100% {
+    transform:scale(1) rotate(-20deg);
+  }
+}
