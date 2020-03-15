@@ -26,9 +26,22 @@ var play = function() {
     var window = remote.getCurrentWindow();
     window.close();  */
 }
+
+var easteregg = function() {
+  
+  $("<img/>").on('load', function(){ 
+    $("#paralax img").fadeOut(500,function(){$(this).remove();});
+    $(this).appendTo("#paralax").fadeIn(500);
+  }).hide().attr("src","img/suprise.jpg");
+
+}
+
 $("#closeButton").click(()=>{
     var window = remote.getCurrentWindow();
     window.close();
+});
+$("#edition").dblclick(()=>{
+  easteregg();
 });
 $("#playButton").click(()=>{
     saveLogin();
@@ -36,6 +49,7 @@ $("#playButton").click(()=>{
 })
 
 $().ready(()=>{
+  $("title").append(process.env.npm_package_version);
 
   properties.parse("./launcher/config.properties",{path:true}, function(err, obj) {
     $("#login").val(obj.login);
@@ -47,7 +61,10 @@ $().ready(()=>{
       if(a!=""){
         let mcapi = JSON.parse(a);
 
-        $("<img/>").on('load', function(){ $("#paralax").append($(this)).fadeIn(500);  $("#onlineList").fadeIn(500); }).attr("src",mcapi.image);
+        $("<img/>").on('load', function(){
+          $("#paralax").append($(this)).fadeIn(500);
+          $("#onlineList").fadeIn(500);
+        }).attr("src",mcapi.image);
 
         //$("#paralax").attr("style","background:url("+mcapi.image+");background-size:cover;background-position:center center;");
 
