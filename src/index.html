@@ -44,7 +44,7 @@
     </nav>
 
     <main class="tab-content">
-        <div id="play" class="tab-pane fade show active">
+        <div id="play" class="tab-pane fade">
             <div id="loginForm" class="bluredBG">
                 <div id="logo"><img src="./img/BiTLogo.png"><span id="edition"></span></div>
                 <h5>Login:</h5>
@@ -55,11 +55,29 @@
             </div>
             
         </div>
-        <div id="skins" class="tab-pane fade">
-            <div class="custom-file bluredBG">
-                <input id="my-input" class="custom-file-input" type="file" name="file">
-                <label for="my-input" class="custom-file-label">Text</label>
+        <div id="skins" class="tab-pane fade show active">
+            <div id="skinsForm" class="bluredBG">
+                <h5>Username and password</h5>
+                <input type="text" id="username" placeholder="username">
+                <input type="password" id="password" placeholder="password">
+                <h5>Skin</h5>
+                <label for="skin" class="custom-file-upload"></label>
+                <input type="file" id="skin" accept=".png" onchange="$(this).prev().html($(this).val().split('/').pop().split('\\').pop())">
+                <div class="text-center"> 
+                    <button class="btn btn-sm btn-success" type="button" onclick="skinUpload('skin')">Upload skin</button>
+                </div>
+                <h5>Cloak</h5>
+                <label for="cloak" class="custom-file-upload"></label>
+                <input type="file" id="cloak" accept=".png" onchange="$(this).prev().html($(this).val().split('/').pop().split('\\').pop())">
+                <div class="text-center"> 
+                    <button class="btn btn-sm btn-success" type="button" onclick="skinUpload('cloak')">Upload cloak</button>
+                </div>
             </div>
+            
+            <div id="preview3D" class="bluredBG">
+                
+            </div>
+            <script src="minecraft.js"></script>
         </div>
         <div id="onlineList" class="bluredBG"  style="display:none;">
             <h6>Players online:</h6>

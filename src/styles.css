@@ -69,7 +69,7 @@ footer{
   left: -5% !important;
 }
 
-#loginForm{
+#loginForm, #skinsForm{
   position: absolute;
   width: 300px;
   top: 175px;
@@ -79,19 +79,33 @@ footer{
   color: white;
 }
 
-#loginForm input{
+#skinsForm{
+  padding: 5px;
+}
+
+#loginForm input, #skinsForm input{
   color:white;
   background: transparent;
   border: none;
   background: rgba(0,0,0,0.3);
   border-radius: 0 0 5px 5px;
+  width: 100%;
+  padding: 2px;
+}
+#password{
+  margin-top: 4px !important;
+  border-radius: 5px !important;
 }
 
-#loginForm h5{
+#loginForm h5, #skinsForm h5{
   margin: 0;
 }
 
-#loginForm button{
+#skinsForm h5:not(:first-child){
+  margin-top: 10px;
+}
+
+#loginForm button, #skinsForm button{
   margin-top: 4px;
   width: 100%;
   font-family: Minecrafter;
@@ -115,7 +129,7 @@ footer{
   font-family: Minecraft;
 }
 
-#onlineList h6, #loginForm h5{
+#onlineList h6, #loginForm h5, #skinsForm h5{
   border-bottom: 1px solid white;
   padding-left: 2px;
 }
@@ -157,4 +171,42 @@ footer{
   100% {
     transform:scale(1) rotate(-20deg);
   }
+}
+
+/* skins */
+
+#preview3D{
+  position: absolute;
+  top: 80px;
+  right: 45px;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload{
+  display: inline-block;
+  padding: 6px 6px 6px 100px;
+  cursor: pointer;
+  background: rgba(0,0,0,0.3);
+  overflow: hidden;
+  position: relative;
+  height: 30px;
+  line-height: 18px;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.custom-file-upload:before{
+  content: "Choose File";
+  display: block;
+  position: absolute;
+  padding: 6px;
+  line-height: 18px;
+  left: 0;
+  top: 0;
+  border-right: 1px solid rgba(255,255,255,0.5);
 }

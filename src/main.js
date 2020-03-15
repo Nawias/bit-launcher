@@ -106,6 +106,32 @@ $.fn.parallax = function(resistance, mouse) {
   });
 };
 
+var skinUpload = function(type){
+  /*
+  var myFormData = new FormData();
+myFormData.append('pictureFile', pictureInput.files[0]);
+
+$.ajax({
+  url: 'upload.php',
+  type: 'POST',
+  processData: false, // important
+  contentType: false, // important
+  dataType : 'json',
+  data: myFormData
+});
+  
+  
+  $.ajax({
+    url: "http://moecukier.ml:2001//upload/"+type,
+    success:(a)=>{
+      
+    },
+    error:(a)=>{
+      console.log(JSON.stringify(a))
+    }
+  });*/
+}
+
 /**
  * {"image":"http:\/\/moecukier.ml:2001\/bg\/2019_01_1.jpg","players":[],"edition":"4"}
  * 
