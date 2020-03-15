@@ -1,6 +1,6 @@
 {
   "name": "bit-launcher",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A custom Minecraft Launcher",
   "author": "Michał Wójcik, Dariusz Witek vel Witkowski",
   "main": "main.js",

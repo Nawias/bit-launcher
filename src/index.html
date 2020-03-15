@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BiT Launcher - Electron Alpha 0.0.1</title>
+    <title>BiT Launcher - Electron Alpha 0.1.2</title>
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./styles.css" />
@@ -30,32 +30,36 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top drag">
         <button id="closeButton" class="btn btn-danger nodrag" type="button">X</button>
         <a class="navbar-brand">Back in Time Launcher</a>
-        <button class="navbar-toggler nodrag" data-target="#my-nav" data-toggle="collapse" aria-controls="my-nav"
-            aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler nodrag" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div id="my-nav" class="collapse navbar-collapse nodrag">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Play <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="skins.html" tabindex="-1">Skins</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <main>
-        <div id="loginForm" class="bluredBG">
-            <div id="logo"><img src="./img/BiTLogo.png"><span id="edition"></span></div>
-            <h5>Login:</h5>
-            <input type="text" class="form-control" id="login">
-            <div class="text-center"> 
-                <button id="playButton" class="btn btn-success" type="button">Launch</button>
+        <div class="collapse navbar-collapse nodrag" id="navbarNavAltMarkup">
+            <div class="navbar-nav nav">
+                <a class="nav-item nav-link active" data-toggle="tab" href="#index">Play</a>
+                <a class="nav-item nav-link" data-toggle="tab" href="#skins">Skins</a>
             </div>
         </div>
-        <div id="onlineList" class="bluredBG"  style="display:none;">
-            <h6>Players online:</h6>
+    </nav>
+
+    <main class="tab-content">
+        <div id="index" class="tab-pane fade show active">
+            <div id="loginForm" class="bluredBG">
+                <div id="logo"><img src="./img/BiTLogo.png"><span id="edition"></span></div>
+                <h5>Login:</h5>
+                <input type="text" class="form-control" id="login">
+                <div class="text-center"> 
+                    <button id="playButton" class="btn btn-success" type="button">Launch</button>
+                </div>
+            </div>
+            <div id="onlineList" class="bluredBG"  style="display:none;">
+                <h6>Players online:</h6>
+            </div>
+        </div>
+        <div id="skins" class="tab-pane fade">
+            <div class="custom-file bluredBG">
+                <input id="my-input" class="custom-file-input" type="file" name="file">
+                <label for="my-input" class="custom-file-label">Text</label>
+            </div>
         </div>
     </main>
     <footer class="fixed-bottom text-center bg-dark text-light">2020 © BiTProject</footer>
