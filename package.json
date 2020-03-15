@@ -11,6 +11,8 @@
   },
   "build": {
     "appId": "ml.moecukier.bitlauncher",
+    "files": ["!launcher/*"],
+    "extraFiles": ["launcher/"],
     "dmg": {
       "contents": [
         {
