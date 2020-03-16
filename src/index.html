@@ -49,7 +49,7 @@
     </nav>
 
     <main class="tab-content">
-        <div id="play" class="tab-pane fade">
+        <div id="play" class="tab-pane fade show active">
             <div id="loginForm" class="bluredBG">
                 <div id="logo"><img src="./img/BiTLogo.png"><span id="edition"></span></div>
                 <h5>Login:</h5>
@@ -62,7 +62,7 @@
                 <h6>Players online:</h6>
             </div>
         </div>
-        <div id="skins" class="tab-pane fade show active">
+        <div id="skins" class="tab-pane fade">
             <div id="skinsForm" class="bluredBG">
                 <h5>Username and password</h5>
                 <input type="text" id="username" placeholder="username">
@@ -87,7 +87,7 @@
             <div id="preview3D" class="bluredBG">
                 <div id="switches">
                     <input type="checkbox" data-toggle="switchbutton" data-onstyle="success" data-width="100" data-size="xs" checked data-onlabel="Walking" data-offlabel="Standing" onchange="toggleWalkAnim(this.checked)">
-                    <input type="checkbox" data-toggle="switchbutton" data-onstyle="success" data-width="100" data-size="xs" checked data-onlabel="Rotating" data-offlabel="Still" onchange="toggleRotateAnim()">
+                    <input type="checkbox" data-toggle="switchbutton" data-onstyle="success" data-width="100" data-size="xs" checked data-onlabel="Rotating" data-offlabel="Still" onchange="toggleRotateAnim(this.checked)">
                 </div>
             </div>
             <script src="minecraft.js" onload="displayBiTSkin()"></script>

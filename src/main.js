@@ -1,5 +1,5 @@
 const remote = require('electron').remote;
-const exec = require('child_process').exec;
+const spawn = require('child_process').spawn;
 const properties = require('properties');
 const fs = require('fs');
 const minecraftjs = require('./minecraft')
@@ -20,12 +20,14 @@ var play = function() {
     if(process.platform === "win32")
         process.env.APPDATA = "./data";
     
-    exec('java -jar mc_fast_skinfix.jar',{cwd: "launcher"} ,function(err, data) {  
-        console.log(err)
-        console.log(data.toString());       
-    }).unref() /*
-    var window = remote.getCurrentWindow();
-    window.close();  */
+    var minecraftProcess = spawn('java', ['-jar', 'mc_fast_skinfix.jar'],{cwd: 'launcher', detached: true} );
+    minecraftProcess.unref();
+    
+    minecraftProcess.stdout.on('data', (data) =>{
+      if(data.toString().includes('asdf'))
+        remote.getCurrentWindow().close();
+    });
+    
 }
 
 var easteregg = function() {
@@ -122,6 +124,10 @@ var skinUpload = function(type){
       contentType: false,
       data: formData,
       statusCode: {
+        500: function() { 
+          $(".toast-body").html("Something went wrong on our side :c").attr("class","toast-body text-danger");
+          $('.toast').toast({delay:3000}).toast('show');
+        },
         404: function() { 
           $(".toast-body").html("Connection error!").attr("class","toast-body text-danger");
           $('.toast').toast({delay:3000}).toast('show');

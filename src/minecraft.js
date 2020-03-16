@@ -60,4 +60,4 @@ var changeBiTSkin = function(login,skinsUrl,capesUrl){
 
 
 var toggleWalkAnim = function(checked){ walk.remove(); walk = skinViewer.animation.add(checked? skinview3d.WalkingAnimation : StandingAnimation) }
-var toggleRotateAnim = function(){ rotate.paused = ! rotate.paused;}
+var toggleRotateAnim = function(checked){ rotate.paused = !checked;}

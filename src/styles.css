@@ -1,6 +1,6 @@
 @font-face {
   font-family: Minecraft;
-  src: url(fonts/Minecraftia-Regular.ttf);
+  src: url(fonts/MinecraftRegular-Bmg3.otf);
 }
 
 @font-face {
@@ -91,10 +91,7 @@ footer{
   background: rgba(0,0,0,0.3);
   border-radius: 0 0 5px 5px;
   width: 100%;
-  padding: 2px 2px 2px 5px;
-  height: 30px;
-  font-size: 14px;
-  line-height: 20px;
+  padding: 5px 2px 0 10px;
 }
 #password{
   margin-top: 4px !important;
@@ -127,10 +124,9 @@ footer{
   text-shadow: 2px 2px rgb(68,68,15);
   animation: pulse .5s infinite;
   transform-origin: 50% 50%;
-  right:-40px;
-  bottom: 30px;
-  font-size: 18px;
-  font-family: Minecraft;
+  right:-45px;
+  bottom: 25px;
+  font-size: 24px;
 }
 
 #onlineList h6, #loginForm h5, #skinsForm h5{
@@ -154,9 +150,8 @@ footer{
 
 #onlineList .player *{
   height: 16px;
-  line-height: 25px;
+  line-height: 16px;
   font-size: 12px;
-  font-family: Minecraft;
 }
 
 #onlineList img{
@@ -198,10 +193,11 @@ input[type="file"] {
   background: rgba(0,0,0,0.3);
   overflow: hidden;
   position: relative;
-  height: 30px;
-  line-height: 18px;
   width: 100%;
   white-space: nowrap;
+  height: 30px;
+  line-height: 20px;
+  font-size: 14px;
 }
 
 .custom-file-upload:before{
@@ -209,7 +205,7 @@ input[type="file"] {
   display: block;
   position: absolute;
   padding: 6px;
-  line-height: 18px;
+  line-height: 20px;
   left: 0;
   top: 0;
   border-right: 1px solid rgba(255,255,255,0.5);
