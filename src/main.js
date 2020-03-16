@@ -74,7 +74,7 @@ $().ready(()=>{
             mcapi.players.forEach(player => {
               $("#onlineList").append(
                 $("<div>").addClass("player").append(
-                  $("<img>").attr("src",obj.dynmapHeads+player+".png"),
+                  $("<img>").attr("src",obj.heads+player+".png"),
                   $("<div>").html(player)
                 )
               );
