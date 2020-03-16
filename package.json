@@ -48,11 +48,12 @@
   },
   "dependencies": {
     "bootstrap": "^4.4.1",
+    "bootstrap-switch-button": "^1.1.0",
     "jquery": "^3.4.1",
     "minecraft-skin": "^0.1.2",
     "popper.js": "^1.16.1",
     "properties": "^1.2.1",
-    "three": "^0.114.0",
-    "voxel-walk": "0.0.5"
+    "skinview3d": "^1.2.1",
+    "three": "^0.114.0"
   }
 }

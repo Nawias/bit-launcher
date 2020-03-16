@@ -61,6 +61,7 @@ main{
 .bluredBG{
   backdrop-filter: blur(5px);
   background: rgba(0,0,0,0.2);
+  font-family: Minecraft;
 }
 
 footer{
@@ -90,7 +91,10 @@ footer{
   background: rgba(0,0,0,0.3);
   border-radius: 0 0 5px 5px;
   width: 100%;
-  padding: 2px;
+  padding: 2px 2px 2px 5px;
+  height: 30px;
+  font-size: 14px;
+  line-height: 20px;
 }
 #password{
   margin-top: 4px !important;
@@ -177,7 +181,7 @@ footer{
 
 #preview3D{
   position: absolute;
-  top: 80px;
+  top: 150px;
   right: 45px;
   padding: 5px;
   border-radius: 10px;
@@ -209,4 +213,25 @@ input[type="file"] {
   left: 0;
   top: 0;
   border-right: 1px solid rgba(255,255,255,0.5);
+}
+
+.toast{
+  position: absolute;
+  right: 0;
+  margin: 10px;
+  font-weight: bold;
+}
+
+#switches{
+  position: absolute;
+  width: 100%;
+  bottom: 5px;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#switches .switch{
+  margin: 0 10px;
 }

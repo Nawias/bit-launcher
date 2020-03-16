@@ -2,6 +2,7 @@ const remote = require('electron').remote;
 const exec = require('child_process').exec;
 const properties = require('properties');
 const fs = require('fs');
+const minecraftjs = require('./minecraft')
 
 var saveLogin = function(){
     properties.parse("./launcher/config.properties",{path:true}, function(err, obj) {
@@ -50,46 +51,46 @@ $("#playButton").click(()=>{
 
 $().ready(()=>{
   $("title").append(process.env.npm_package_version);
-
   properties.parse("./launcher/config.properties",{path:true}, function(err, obj) {
     $("#login").val(obj.login);
-  });
+    $("#username").val(obj.login);
+    changeBiTSkin(obj.login, obj.skin, obj.cloak);
 
-  $.ajax({
-    url: "http://moecukier.ml:2001/launcher/json",
-    success:(a)=>{
-      if(a!=""){
-        let mcapi = JSON.parse(a);
+    $.ajax({
+      url: obj.mcapi,
+      success:(a)=>{
+        if(a!=""){
+          let mcapi = JSON.parse(a);
+  
+          $("<img/>").on('load', function(){
+            $("#paralax").append($(this)).fadeIn(500);
+            $("#onlineList").fadeIn(500);
+          }).attr("src",mcapi.image);
 
-        $("<img/>").on('load', function(){
-          $("#paralax").append($(this)).fadeIn(500);
-          $("#onlineList").fadeIn(500);
-        }).attr("src",mcapi.image);
-
-        //$("#paralax").attr("style","background:url("+mcapi.image+");background-size:cover;background-position:center center;");
-
-        $("#edition").html("Edition "+mcapi.edition);
-        if(mcapi.players.length){
-          mcapi.players.forEach(player => {
+          $("#edition").html("Edition "+mcapi.edition);
+          if(mcapi.players.length){
+            mcapi.players.forEach(player => {
+              $("#onlineList").append(
+                $("<div>").addClass("player").append(
+                  $("<img>").attr("src",obj.dynmapHeads+player+".png"),
+                  $("<div>").html(player)
+                )
+              );
+            });
+          } else {
             $("#onlineList").append(
               $("<div>").addClass("player").append(
-                $("<img>").attr("src","http://moecukier.ml:2000/images/new/"+player+".png"),
-                $("<div>").html(player)
+                $("<div>").html("No players online")
               )
             );
-          });
-        } else {
-          $("#onlineList").append(
-            $("<div>").addClass("player").append(
-              $("<div>").html("No players online")
-            )
-          );
+          }
         }
+      },
+      error:(a)=>{
+        console.log(JSON.stringify(a))
       }
-    },
-    error:(a)=>{
-      console.log(JSON.stringify(a))
-    }
+    });
+
   });
 
   $(document).mousemove(function(e) {
@@ -107,29 +108,44 @@ $.fn.parallax = function(resistance, mouse) {
 };
 
 var skinUpload = function(type){
-  /*
-  var myFormData = new FormData();
-myFormData.append('pictureFile', pictureInput.files[0]);
+  properties.parse("./launcher/config.properties",{path:true}, function(err, obj) {
+    
+    let formData = new FormData();
+    formData.append('name', $("#username").val());
+    formData.append('password', $("#password").val());
+    formData.append('myfile', $("#"+type)[0].files[0]);
+    
+    $.ajax({
+      url: obj.skinapi+type,
+      type: 'POST',
+      processData: false,
+      contentType: false,
+      data: formData,
+      statusCode: {
+        404: function() { 
+          $(".toast-body").html("Connection error!").attr("class","toast-body text-danger");
+          $('.toast').toast({delay:3000}).toast('show');
+        },
+        403: function() { 
+          $(".toast-body").html("Wrong name or password!").attr("class","toast-body text-warning");
+          $('.toast').toast({delay:3000}).toast('show');
+        },
+        200: function() {
+          $(".toast-body").html("Upload succes!").attr("class","toast-body text-success");
+          $('.toast').toast({delay:3000}).toast('show');
+        }
+      }
+    });
+  });
+}
 
-$.ajax({
-  url: 'upload.php',
-  type: 'POST',
-  processData: false, // important
-  contentType: false, // important
-  dataType : 'json',
-  data: myFormData
-});
-  
-  
-  $.ajax({
-    url: "http://moecukier.ml:2001//upload/"+type,
-    success:(a)=>{
-      
-    },
-    error:(a)=>{
-      console.log(JSON.stringify(a))
-    }
-  });*/
+var displayImage = function(e,type){
+  $(e).prev().html($(e).val().split('/').pop().split('\\').pop());
+  let files = e.files, reader = new FileReader();
+  reader.onload = function(frEvent) {
+    skinViewer[(type)?'capeUrl':'skinUrl'] = frEvent.target.result;
+  }
+  reader.readAsDataURL(files[0]);
 }
 
 /**

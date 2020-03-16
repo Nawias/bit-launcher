@@ -7,7 +7,9 @@
     <title>BiT Launcher - Electron Alpha </title>
     <!-- Bootstrap CSS-->
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../node_modules/bootstrap-switch-button/css/bootstrap-switch-button.css">
     <link rel="stylesheet" href="./styles.css" />
+    
     <!-- Bootstrap Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script>
@@ -18,6 +20,9 @@
     </script>
     <script>
         require('bootstrap')
+    </script>
+    <script>
+        require('bootstrap-switch-button')
     </script>
     <script src="./libs/TweenLite.min.js"></script>
     <script src="./libs/CSSPlugin.min.js"></script>
@@ -53,7 +58,9 @@
                     <button id="playButton" class="btn btn-success" type="button">Launch</button>
                 </div>
             </div>
-            
+            <div id="onlineList" class="bluredBG"  style="display:none;">
+                <h6>Players online:</h6>
+            </div>
         </div>
         <div id="skins" class="tab-pane fade show active">
             <div id="skinsForm" class="bluredBG">
@@ -62,26 +69,31 @@
                 <input type="password" id="password" placeholder="password">
                 <h5>Skin</h5>
                 <label for="skin" class="custom-file-upload"></label>
-                <input type="file" id="skin" accept=".png" onchange="$(this).prev().html($(this).val().split('/').pop().split('\\').pop())">
+                <input type="file" id="skin" accept=".png" onchange="displayImage(this,0)">
                 <div class="text-center"> 
                     <button class="btn btn-sm btn-success" type="button" onclick="skinUpload('skin')">Upload skin</button>
                 </div>
                 <h5>Cloak</h5>
                 <label for="cloak" class="custom-file-upload"></label>
-                <input type="file" id="cloak" accept=".png" onchange="$(this).prev().html($(this).val().split('/').pop().split('\\').pop())">
+                <input type="file" id="cloak" accept=".png" onchange="displayImage(this,1)">
                 <div class="text-center"> 
                     <button class="btn btn-sm btn-success" type="button" onclick="skinUpload('cloak')">Upload cloak</button>
                 </div>
             </div>
+            <div class="toast bluredBG">
+                <div class="toast-body"></div>
+            </div>
             
             <div id="preview3D" class="bluredBG">
-                
+                <div id="switches">
+                    <input type="checkbox" data-toggle="switchbutton" data-onstyle="success" data-width="100" data-size="xs" checked data-onlabel="Walking" data-offlabel="Standing" onchange="toggleWalkAnim(this.checked)">
+                    <input type="checkbox" data-toggle="switchbutton" data-onstyle="success" data-width="100" data-size="xs" checked data-onlabel="Rotating" data-offlabel="Still" onchange="toggleRotateAnim()">
+                </div>
             </div>
-            <script src="minecraft.js"></script>
+            <script src="minecraft.js" onload="displayBiTSkin()"></script>
+
         </div>
-        <div id="onlineList" class="bluredBG"  style="display:none;">
-            <h6>Players online:</h6>
-        </div>
+        
     </main>
     <footer class="fixed-bottom text-center bg-dark text-light">2020 © BiTProject</footer>
 </body>
