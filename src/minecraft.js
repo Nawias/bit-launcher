@@ -1,4 +1,4 @@
-var skinview3d = require('skinview3D');
+var skinview3d = require('skinview3d');
 
 var StandingAnimation = (player,time) => {
     const skin = player.skin;
